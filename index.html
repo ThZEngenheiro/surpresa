@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>❤️ Quiz dos nossos 3 anos ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ffd6e7,
+                #fff0f5
+            );
+
+            color: #590d22;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+
+            background: rgba(255, 255, 255, 0.55);
+
+            border-radius: 25px;
+
+            padding: 40px 30px;
+
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(89, 13, 34, 0.15);
+        }
+
+        .coracao {
+            font-size: 70px;
+            margin-bottom: 10px;
+
+            animation: bater 1s infinite alternate;
+        }
+
+        @keyframes bater {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.15);
+            }
+        }
+
+        h1 {
+            color: #c9184a;
+            margin-bottom: 10px;
+        }
+
+        #contador {
+            color: #9d4edd;
+            font-size: 14px;
+        }
+
+        #pergunta {
+            font-size: 22px;
+            margin: 30px 0;
+        }
+
+        .opcoes {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 16px;
+
+            border: none;
+            border-radius: 15px;
+
+            background: #ff4d6d;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            background: #c9184a;
+        }
+
+        button.certo {
+            background: #4CAF50;
+        }
+
+        button.errado {
+            background: #e63946;
+        }
+
+        #feedback {
+            height: 25px;
+
+            margin-top: 20px;
+
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        #tela-final {
+            display: none;
+        }
+
+        .coracoes-final {
+            font-size: 30px;
+            margin-bottom: 15px;
+
+            animation: bater 0.8s infinite alternate;
+        }
+
+        #texto-final {
+            background: #fff0f5;
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            text-align: left;
+
+            line-height: 1.7;
+
+            white-space: pre-line;
+
+            max-height: 450px;
+            overflow-y: auto;
+
+            margin-top: 20px;
+        }
+
+        .assinatura {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            #pergunta {
+                font-size: 19px;
+            }
+
+            button {
+                font-size: 15px;
+            }
+
+            .coracao {
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- QUIZ -->
+
+    <div class="container" id="quiz">
+
+        <div class="coracao">
+            ❤️
+        </div>
+
+        <h1>
+            Quiz dos nossos 3 anos
+        </h1>
+
+        <p id="contador"></p>
+
+        <h2 id="pergunta"></h2>
+
+        <div class="opcoes" id="opcoes"></div>
+
+        <div id="feedback"></div>
+
+    </div>
+
+
+    <!-- TELA FINAL -->
+
+    <div class="container" id="tela-final">
+
+        <div class="coracoes-final">
+            ❤️ ❤️ ❤️ ❤️ ❤️
+        </div>
+
+        <h1>
+            Feliz 3 anossss ❤️
+        </h1>
+
+        <div id="texto-final"></div>
+
+    </div>
+
+
+    <script>
+
+        // ==============================
+        // PERGUNTAS
+        // ==============================
+
+        const perguntas = [
+
+            {
+                pergunta:
+                    "Que dia a gente começou a namorar? ❤️",
+
+                opcoes: [
+                    "A) 09/03/2023",
+                    "B) 03/09/2023",
+                    "C) 03/09/2024",
+                    "D) 04/07/2023"
+                ],
+
+                correta: 1
+            },
+
+
+            {
+                pergunta:
+                    "O que a gente mais gosta de comer? 😋❤️",
+
+                opcoes: [
+                    "A) Doces",
+                    "B) Legumes",
+                    "C) Carne",
+                    "D) Salgadinho"
+                ],
+
+                correta: 0
+            },
+
+
+            {
+                pergunta:
+                    "Qual foi o primeiro show que fomos juntos sozinhos? 🎶❤️",
+
+                opcoes: [
+                    "A) Matheus e Kauan",
+                    "B) Luan Santana",
+                    "C) Bruno Mars",
+                    "D) Matuê"
+                ],
+
+                correta: 2
+            },
+
+
+            {
+                pergunta:
+                    "Eu te amo muito amor, obrigado por esses nossos 3 anos!!!! ❤️",
+
+                opcoes: [
+                    "A) Ir para o fim do quiz ❤️"
+                ],
+
+                correta: 0
+            }
+
+        ];
+
+
+        // ==============================
+        // TEXTO FINAL
+        // ==============================
+
+        const textoFinal = `Amor, hoje a gente completa 3 anos juntos e eu só tenho a agradecer por tudo que a gente viveu até aqui.
+
+Foram 3 anos de muito amor, parceria, risadas, momentos bons e também momentos difíceis que a gente enfrentou juntos. E acho que é justamente isso que faz o nosso relacionamento ser tão especial pra mim: ter a certeza de que, independentemente da situação, eu tenho você do meu lado.
+
+Obrigado por ser minha companheira, por me apoiar, por cuidar de mim, por ter paciência comigo e por fazer parte de tantos momentos importantes da minha vida.
+
+Sou muito feliz por tudo que construímos nesses 3 anos e por todas as lembranças que já criamos juntos. Parece muito clichê, mas passou muito rápido. Ao mesmo tempo, quando eu lembro de tanta coisa que a gente já viveu, percebo o quanto crescemos e mudamos juntos.
+
+E mesmo depois de todo esse tempo, continuo amando dividir meus dias, minhas preocupações e minhas besteiras com você.
+
+Eu te amo muito.
+
+Obrigado por esses 3 anos, mô. Que esse seja só mais um aniversário entre muitos que ainda vamos comemorar juntos.
+
+Eu te amo demais e sou muito grato por ter você na minha vida.
+
+Feliz 3 anossss ❤️`;
+
+
+        // ==============================
+        // VARIÁVEIS
+        // ==============================
+
+        let perguntaAtual = 0;
+
+        let bloqueado = false;
+
+
+        const perguntaElemento =
+            document.getElementById("pergunta");
+
+        const opcoesElemento =
+            document.getElementById("opcoes");
+
+        const contadorElemento =
+            document.getElementById("contador");
+
+        const feedbackElemento =
+            document.getElementById("feedback");
+
+
+        // ==============================
+        // MOSTRAR PERGUNTA
+        // ==============================
+
+        function mostrarPergunta() {
+
+            bloqueado = false;
+
+            feedbackElemento.innerText = "";
+
+            const pergunta =
+                perguntas[perguntaAtual];
+
+
+            contadorElemento.innerText =
+                `Pergunta ${perguntaAtual + 1} de ${perguntas.length} ❤️`;
+
+
+            perguntaElemento.innerText =
+                pergunta.pergunta;
+
+
+            opcoesElemento.innerHTML = "";
+
+
+            pergunta.opcoes.forEach(
+                (opcao, indice) => {
+
+                    const botao =
+                        document.createElement("button");
+
+
+                    botao.innerText =
+                        opcao;
+
+
+                    botao.onclick = () =>
+                        responder(
+                            indice,
+                            botao
+                        );
+
+
+                    opcoesElemento.appendChild(
+                        botao
+                    );
+
+                }
+            );
+        }
+
+
+        // ==============================
+        // RESPONDER
+        // ==============================
+
+        function responder(indice, botao) {
+
+            if (bloqueado) {
+                return;
+            }
+
+
+            const pergunta =
+                perguntas[perguntaAtual];
+
+
+            if (indice === pergunta.correta) {
+
+                bloqueado = true;
+
+                botao.classList.add(
+                    "certo"
+                );
+
+
+                feedbackElemento.innerText =
+                    "Acertou, amor ❤️";
+
+
+                feedbackElemento.style.color =
+                    "#4CAF50";
+
+
+                setTimeout(() => {
+
+                    perguntaAtual++;
+
+
+                    if (
+                        perguntaAtual <
+                        perguntas.length
+                    ) {
+
+                        mostrarPergunta();
+
+                    } else {
+
+                        mostrarFinal();
+
+                    }
+
+                }, 900);
+
+
+            } else {
+
+                bloqueado = true;
+
+                botao.classList.add(
+                    "errado"
+                );
+
+
+                feedbackElemento.innerText =
+                    "KKKKKK errou 😭 tenta de novo";
+
+
+                feedbackElemento.style.color =
+                    "#e63946";
+
+
+                setTimeout(() => {
+
+                    botao.classList.remove(
+                        "errado"
+                    );
+
+                    feedbackElemento.innerText =
+                        "";
+
+                    bloqueado = false;
+
+                }, 700);
+
+            }
+        }
+
+
+        // ==============================
+        // TELA FINAL
+        // ==============================
+
+        function mostrarFinal() {
+
+            document.getElementById(
+                "quiz"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "tela-final"
+            ).style.display = "block";
+
+
+            escreverTexto(0);
+        }
+
+
+        // ==============================
+        // EFEITO DE DIGITAÇÃO
+        // ==============================
+
+        function escreverTexto(indice) {
+
+            const elemento =
+                document.getElementById(
+                    "texto-final"
+                );
+
+
+            if (
+                indice <
+                textoFinal.length
+            ) {
+
+                elemento.innerText +=
+                    textoFinal[indice];
+
+
+                elemento.scrollTop =
+                    elemento.scrollHeight;
+
+
+                setTimeout(
+                    () =>
+                        escreverTexto(
+                            indice + 1
+                        ),
+                    15
+                );
+
+            }
+        }
+
+
+        // ==============================
+        // COMEÇAR
+        // ==============================
+
+        mostrarPergunta();
+
+    </script>
+
+</body>
+
+</html>
